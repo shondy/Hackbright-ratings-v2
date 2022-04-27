@@ -31,4 +31,20 @@ for movie_dic in movie_data:
     movies.append(movie)
 
 model.db.session.add_all(movies)
+
+# Create 10 users; each user will make 10 ratings
+for n in range(10):
+    email = f"user{n}@test.com"  # Voila! A unique email!
+    password = "test"
+
+    user = crud.create_user(email, password)
+    model.db.session.add(user)
+
+    for _ in range(10):
+        random_movie = choice(movies)
+        score = randint(1, 5)
+
+        rating = model.Rating.create(user, random_movie, score)
+        model.db.session.add(rating)
+
 model.db.session.commit()
