@@ -9,5 +9,23 @@
   {{ movie.overview }}
 </p>
 
-<img src="{{ movie.poster_path }}">
+
+<p> DEBUGGING: MOVIE ID: {{ movie.movie_id }} </p>
+<P> THIS IS THE ROUTE WE"LL VISIT: "/movies/{{ movie.movie_id }}"</P>
+
+
+<div class="rating">
+  <form action="/movies/{{ movie.movie_id }}" method="POST">
+    <select name="ratings">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <input type = "submit" value = "Rate this movie!">
+  </form>
+</div>
+
+<img src="{{ movie.poster_path }}" id="movie_poster">
 {% endblock %}

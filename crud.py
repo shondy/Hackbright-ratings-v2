@@ -36,12 +36,19 @@ def get_user_by_id(user_id):
 
     return User.query.get(user_id)
 
+def get_user_by_email(email):
+    """ Get user by email. """
+
+    return User.query.filter(User.email == email).first()
 
 
-def create_rating(user, movie, score):
+
+def create_rating(user_id, movie_id, score):
     """ Create and return a new rating """
+    print (f" &&&&&& going to make a rating with user: {user_id} movie: {movie_id} score: {score}")
 
-    rating = Rating(user = user, movie = movie, score = score)
+    rating = Rating(user_id = user_id, movie_id = movie_id, score = score)
+    print (" ======== rating > ", rating)
 
     return rating
 

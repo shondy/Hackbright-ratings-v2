@@ -8,10 +8,18 @@
     </title>
 
     {% block head %}{% endblock %}
+    <link rel="stylesheet" href="/static/ratings.css">
   </head>
   <body>
-    {% block body %}{% endblock %}
+    {% for msg in get_flashed_messages() %}
+    <p class="flash-msg">
+      {{ msg }}
+    </p>
+    {% endfor %}        
+
+    {% block body %}  {% endblock %}
 
     {% block after_body %}{% endblock %}
+    <script src="/static/ratings.js"></script>
   </body>
 </html>
